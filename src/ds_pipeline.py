@@ -50,3 +50,23 @@ plt.savefig("figures/train_actual_vs_pred.png")
 plt.close()
 
 print("Train plot saved to figures/train_actual_vs_pred.png")
+import os
+import matplotlib.pyplot as plt
+
+print("MLPRegressor model trained successfully")
+
+# Test predictions
+y_test_pred = mlp.predict(X_test_scaled)
+
+# Plot: actual vs predicted (test)
+os.makedirs("figures", exist_ok=True)
+
+plt.figure()
+plt.scatter(y_test, y_test_pred, alpha=0.3)
+plt.xlabel("Actual")
+plt.ylabel("Predicted")
+plt.title("Test: Actual vs Predicted")
+plt.savefig("figures/test_actual_vs_pred.png")
+plt.close()
+
+print("Test plot saved to figures/test_actual_vs_pred.png")
