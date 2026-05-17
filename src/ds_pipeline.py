@@ -1,3 +1,5 @@
+import os
+import matplotlib.pyplot as plt
 from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
@@ -32,3 +34,19 @@ mlp = MLPRegressor(
 mlp.fit(X_train_scaled, y_train)
 
 print("MLPRegressor model trained successfully")
+
+# Train predictions
+y_train_pred = mlp.predict(X_train_scaled)
+
+# Plot: actual vs predicted (train)
+os.makedirs("figures", exist_ok=True)
+
+plt.figure()
+plt.scatter(y_train, y_train_pred, alpha=0.3)
+plt.xlabel("Actual")
+plt.ylabel("Predicted")
+plt.title("Train: Actual vs Predicted")
+plt.savefig("figures/train_actual_vs_pred.png")
+plt.close()
+
+print("Train plot saved to figures/train_actual_vs_pred.png")
